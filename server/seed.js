@@ -15,10 +15,10 @@ const projects = [
   },
   {
     title: 'Task Manager App',
-    description: 'A kanban-style task manager with drag-and-drop and team collaboration.',
-    imageUrl: 'https://via.placeholder.com/600x400?text=Task+Manager',
-    liveLink: 'https://example.com',
-    githubLink: 'https://github.com/yourname/taskmanager',
+    description: 'Custom marker representing live location of vehicle with vehicle info using IoT.',
+    imageUrl: 'https://res.cloudinary.com/dbwik897e/image/upload/v1781368679/Screenshot_from_2026-06-11_16-25-22_sjvjmr.png',
+    liveLink: 'https://google.com',
+    githubLink: 'https://github.com/charlesekpo',
     tags: ['React', 'Express', 'Socket.io'],
   },
 ];

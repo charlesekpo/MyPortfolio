@@ -3,7 +3,7 @@ export default function About() {
     <section id="about" className="section about">
       <div className="about-content">
         <div className="about-text">
-          <h1>Hi, I'm <span className="highlight">Your Name</span></h1>
+          <h1>Hi, I'm <span className="highlight">Charles</span></h1>
           <h2>Full-Stack Developer</h2>
           <p>
             I build clean, performant web applications using the MERN stack.
@@ -16,7 +16,7 @@ export default function About() {
             </a>
           </div>
         </div>
-        <img src="/avatar.png" alt="Your Name" className="avatar" />
+        <img src="/photo.jpeg" alt="Charles photo" className="avatar" />
       </div>
     </section>
   );
