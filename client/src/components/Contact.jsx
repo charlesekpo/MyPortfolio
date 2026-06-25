@@ -3,16 +3,44 @@ import { useState } from 'react';
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Replace this with EmailJS, Formspree, or your own backend endpoint
-    setStatus('Message sent! I\'ll be in touch soon.');
-    setForm({ name: '', email: '', message: '' });
-  };
+  e.preventDefault();
+
+  try {
+    setLoading(true);
+    const response = await fetch(
+      "https://formspree.io/f/xeebaldr",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify(form),
+      }
+    );
+    
+    if (response.ok) {
+      setStatus("Message sent!");
+      setForm({
+        name: "",
+        email: "",
+        message: "",
+      });
+    } else {
+      setStatus("Failed to send message.");
+    }
+  } catch (error) {
+    setStatus("Something went wrong.");
+  }finally {
+    setLoading(false);
+  }
+};
 
   return (
     <section id="contact" className="section contact">
@@ -42,7 +70,13 @@ export default function Contact() {
           onChange={handleChange}
           required
         />
-        <button type="submit" className="btn btn-primary">Send Message</button>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={loading}
+        >
+          {loading ? "Sending..." : "Send Message"}
+        </button>
         {status && <p className="status">{status}</p>}
       </form>
     </section>
